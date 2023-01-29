@@ -1,12 +1,12 @@
 import React from "react";
-import Forms from "./Forms";
+import Form from "./Form";
 import Sidebar from "./Sidebar";
 
 const Main = () => {
   return (
     <main>
       <Sidebar />
-      <Forms />
+      <Form />
     </main>
   );
 };
