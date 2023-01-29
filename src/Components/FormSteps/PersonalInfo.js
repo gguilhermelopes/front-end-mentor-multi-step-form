@@ -10,19 +10,17 @@ const PersonalInfo = () => {
   const name = useForm("");
   const email = useForm("email");
   const phone = useForm("phone");
-  const { step, setStep, data, setData } = React.useContext(GlobalContext);
+  const { step, setStep, info, setInfo } = React.useContext(GlobalContext);
 
   function handleSubmit(event) {
     event.preventDefault();
     if (name.validate() && email.validate() && phone.validate()) {
       setStep(step + 1);
-      setData({
-        ...data,
-        personalInfo: {
-          name: name.value,
-          email: email.value,
-          phone: phone.value,
-        },
+      setInfo({
+        ...info,
+        name: name.value,
+        email: email.value,
+        phone: phone.value,
       });
     }
   }
@@ -55,7 +53,9 @@ const PersonalInfo = () => {
           placeholder="e.g. +1 234 567 890"
           {...phone}
         />
-        <Button id="next" buttonInfo="Next Step" />
+        <div className={styles.flexParent}>
+          <Button id="next" buttonInfo="Next Step" />
+        </div>
       </form>
     </>
   );

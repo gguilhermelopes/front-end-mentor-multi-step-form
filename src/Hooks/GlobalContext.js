@@ -3,20 +3,24 @@ import React from "react";
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
-  const [step, setStep] = React.useState(2);
-  const [data, setData] = React.useState({
-    personalInfo: {
-      name: "",
-      email: "",
-      phone: "",
-    },
-    planSelection: {
-      plan: "",
-      duration: "monthly",
-    },
-  });
+  const [step, setStep] = React.useState(1);
+  const [info, setInfo] = React.useState({ name: "", email: "", phone: "" });
+  const [plan, setPlan] = React.useState("Pro");
+  const [duration, setDuration] = React.useState("");
+
   return (
-    <GlobalContext.Provider value={{ step, setStep, data, setData }}>
+    <GlobalContext.Provider
+      value={{
+        step,
+        setStep,
+        info,
+        setInfo,
+        duration,
+        setDuration,
+        plan,
+        setPlan,
+      }}
+    >
       {children}
     </GlobalContext.Provider>
   );
