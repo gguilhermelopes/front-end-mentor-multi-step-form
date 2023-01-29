@@ -14,9 +14,7 @@ const SidebarItem = ({ index, stepInfo }) => {
   return (
     <div className={styles.itemWrapper}>
       <span
-        className={
-          !isActive ? styles.index : `${styles.index} ${styles.active}`
-        }
+        className={isActive ? `${styles.index} ${styles.active}` : styles.index}
       >
         {index}
       </span>
