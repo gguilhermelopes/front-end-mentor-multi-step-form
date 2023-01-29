@@ -131,7 +131,7 @@ a {
 
 /* IMPORTS AND GENERAL STYLES */
 
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
 
 :root {
   /* Primary colors */
@@ -148,9 +148,19 @@ a {
   --white: hsl(0, 0%, 100%);
 }
 
+img {
+  max-width: 100%;
+  display: block;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Ubuntu", sans-serif;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;

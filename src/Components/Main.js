@@ -1,11 +1,11 @@
 import React from "react";
 import Forms from "./Forms";
-import Steps from "./Steps";
+import Sidebar from "./Sidebar";
 
 const Main = () => {
   return (
     <main>
-      <Steps />
+      <Sidebar />
       <Forms />
     </main>
   );

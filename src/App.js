@@ -1,11 +1,14 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import Main from "./Components/Main";
+import { GlobalStorage } from "./Hooks/GlobalContext";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Main />
+      <GlobalStorage>
+        <Main />
+      </GlobalStorage>
     </BrowserRouter>
   );
 };
