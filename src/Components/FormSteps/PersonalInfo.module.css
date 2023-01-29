@@ -25,7 +25,6 @@
   font-weight: 500;
   color: var(--marine-blue);
   outline: none;
-  cursor: pointer;
 }
 
 .form input + label {

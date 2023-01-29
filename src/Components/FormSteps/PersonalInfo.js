@@ -4,11 +4,28 @@ import styles from "./PersonalInfo.module.css";
 import Input from "../../Helpers/Input";
 import Button from "../../Helpers/Button";
 import useForm from "../../Hooks/useForm";
+import { GlobalContext } from "../../Hooks/GlobalContext";
 
 const PersonalInfo = () => {
   const name = useForm("");
   const email = useForm("email");
   const phone = useForm("phone");
+  const { step, setStep, data, setData } = React.useContext(GlobalContext);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    if (name.validate() && email.validate() && phone.validate()) {
+      setStep(step + 1);
+      setData({
+        ...data,
+        personalInfo: {
+          name: name.value,
+          email: email.value,
+          phone: phone.value,
+        },
+      });
+    }
+  }
 
   return (
     <>
@@ -16,10 +33,7 @@ const PersonalInfo = () => {
         title="Personal Info"
         info="Please provide your name, email address, and phone number."
       />
-      <form
-        className={styles.form}
-        onSubmit={(event) => event.preventDefault()}
-      >
+      <form className={styles.form} onSubmit={handleSubmit}>
         <Input
           type="text"
           id="name"

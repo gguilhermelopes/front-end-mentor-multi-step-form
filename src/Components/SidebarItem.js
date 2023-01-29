@@ -1,5 +1,4 @@
 import React from "react";
-
 import { GlobalContext } from "../Hooks/GlobalContext";
 import styles from "./SidebarItem.module.css";
 
