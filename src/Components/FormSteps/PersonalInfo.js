@@ -4,42 +4,27 @@ import styles from "./PersonalInfo.module.css";
 import Input from "../../Helpers/Input";
 import Button from "../../Helpers/Button";
 import useForm from "../../Hooks/useForm";
+import useMobile from "../../Hooks/useMobile";
+
 import { GlobalContext } from "../../Hooks/GlobalContext";
 
 const PersonalInfo = () => {
   const name = useForm("");
   const email = useForm("email");
   const phone = useForm("phone");
-  const { step, setStep, info, setInfo } = React.useContext(GlobalContext);
-
-  React.useEffect(() => {
-    const inputName = document.getElementById("name");
-    const inputEmail = document.getElementById("email");
-    const inputPhone = document.getElementById("phone");
-    if (info.name) {
-      inputName.value = info.name;
-      name.setValue(info.name);
-    }
-    if (info.email) {
-      inputEmail.value = info.email;
-      email.setValue(info.email);
-    }
-    if (info.phone) {
-      inputPhone.value = info.phone;
-      phone.setValue(info.phone);
-    }
-  }, [info.name, name, info.email, email, info.phone, phone]);
+  const { step, setStep } = React.useContext(GlobalContext);
+  const mobile = useMobile("(max-width:940px)");
 
   function handleSubmit(event) {
     event.preventDefault();
     if (name.validate() && email.validate() && phone.validate()) {
       setStep(step + 1);
-      setInfo({
-        ...info,
+      const localStorage = JSON.stringify({
         name: name.value,
         email: email.value,
         phone: phone.value,
       });
+      window.localStorage.setItem("info", localStorage);
     }
   }
 
@@ -49,7 +34,10 @@ const PersonalInfo = () => {
         title="Personal Info"
         info="Please provide your name, email address, and phone number."
       />
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form
+        className={mobile ? `${styles.form} ${styles.mobile}` : styles.form}
+        onSubmit={handleSubmit}
+      >
         <Input
           type="text"
           id="name"
@@ -59,6 +47,7 @@ const PersonalInfo = () => {
         />
         <Input
           type="email"
+          name="email"
           id="email"
           label="Email Address"
           placeholder="e.g. scorsesemarty@lorem.com"
@@ -66,13 +55,16 @@ const PersonalInfo = () => {
         />
         <Input
           type="number"
+          name="phone"
           id="phone"
           label="Phone Number"
           placeholder="e.g. +1 234 567 890"
           {...phone}
         />
         <div className={styles.flexParent}>
-          <Button id="next" buttonInfo="Next Step" />
+          <div className={styles.buttonWrapper}>
+            <Button id="next" buttonInfo="Next Step" />
+          </div>
         </div>
       </form>
     </>

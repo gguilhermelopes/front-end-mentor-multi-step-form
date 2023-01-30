@@ -1,9 +1,11 @@
 import React from "react";
 import { GlobalContext } from "../Hooks/GlobalContext";
+import useMobile from "../Hooks/useMobile";
 import styles from "./SidebarItem.module.css";
 
 const SidebarItem = ({ index, stepInfo }) => {
   const { step } = React.useContext(GlobalContext);
+  const mobile = useMobile("(max-width: 940px)");
 
   function active(step, index) {
     if (step === index) return true;
@@ -11,15 +13,19 @@ const SidebarItem = ({ index, stepInfo }) => {
   const isActive = active(step, index);
 
   return (
-    <div className={styles.itemWrapper}>
+    <div
+      className={
+        mobile ? `${styles.itemWrapper} ${styles.mobile}` : styles.itemWrapper
+      }
+    >
       <span
         className={isActive ? `${styles.index} ${styles.active}` : styles.index}
       >
         {index}
       </span>
       <div className={styles.stepWrapper}>
-        <span>Step {index}</span>
-        <span>{stepInfo}</span>
+        <span>{mobile ? "" : `Step ${index}`}</span>
+        <span>{mobile ? "" : stepInfo}</span>
       </div>
     </div>
   );

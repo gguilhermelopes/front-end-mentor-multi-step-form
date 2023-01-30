@@ -52,7 +52,7 @@
   color: var(--cool-gray);
 }
 
-.addOnsItemWrapper p + span {
+.addOnsItemWrapper {
   margin-top: 1rem;
 }
 

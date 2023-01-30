@@ -4,6 +4,10 @@
   gap: 1.5rem;
 }
 
+.itemWrapper.mobile {
+  gap: 0.875rem;
+}
+
 span {
   display: block;
 }
@@ -18,7 +22,6 @@ span {
   padding: 0.5rem;
   border-radius: 50%;
   font-weight: 500;
-  cursor: pointer;
 }
 
 .index.active {

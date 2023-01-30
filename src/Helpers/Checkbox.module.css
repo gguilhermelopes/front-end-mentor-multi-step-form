@@ -44,3 +44,17 @@ label + label {
 .checkboxWrapper input {
   width: 2rem;
 }
+
+@media (max-width: 940px) {
+  .checkboxWrapper {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .checkboxWrapper input {
+    width: 1rem;
+  }
+
+  .checkboxWrapper p {
+    font-size: 0.675rem;
+  }
+}

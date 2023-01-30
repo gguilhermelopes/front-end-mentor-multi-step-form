@@ -87,7 +87,7 @@ const Summary = () => {
               setStep(step + 1);
             }}
             id="next"
-            buttonInfo="Next Step"
+            buttonInfo="Finish"
           />
         </div>
       </div>

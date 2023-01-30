@@ -179,6 +179,18 @@ main {
   gap: 1rem;
 }
 
+@media (max-width: 940px) {
+  body {
+    justify-content: flex-start;
+  }
+  main {
+    grid-template-columns: 1fr;
+    width: auto;
+    height: auto;
+    background: var(--magnolia);
+  }
+}
+
 /* TITLES AND INFOS */
 
 .formTitle {
@@ -191,6 +203,17 @@ main {
 .formInfo {
   color: var(--cool-gray);
   margin-bottom: 2.5rem;
+}
+
+@media (max-width: 940px) {
+  .formTitle {
+    font-size: 1.75rem;
+  }
+
+  .formInfo {
+    line-height: 1.75rem;
+    margin-bottom: 1.75rem;
+  }
 }
 
 /* REMOVING ARROWS ON NUMBER INPUTS */

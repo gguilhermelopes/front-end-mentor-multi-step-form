@@ -7,6 +7,7 @@ import { ReactComponent as Pro } from "../../Assets/icon-pro.svg";
 import { GlobalContext } from "../../Hooks/GlobalContext";
 import Slider from "../../Helpers/Slider";
 import Button from "../../Helpers/Button";
+import useMobile from "../../Hooks/useMobile";
 
 export const planOptions = [
   {
@@ -33,6 +34,7 @@ const PlanSelection = () => {
   const { duration, setDuration, plan, setPlan, setStep, step } =
     React.useContext(GlobalContext);
   const isMonthly = duration[0] ? false : true;
+  const mobile = useMobile("(max-width:940px)");
 
   const svgMapping = {
     Arcade,
@@ -50,7 +52,11 @@ const PlanSelection = () => {
         title="Select your plan"
         info="You have the option of monthly or yearly billing."
       />
-      <div className={styles.planWrapper}>
+      <div
+        className={
+          mobile ? `${styles.planWrapper} ${styles.mobile}` : styles.planWrapper
+        }
+      >
         {planOptions.map((item) => {
           const SvgComponent = svgMapping[Object.keys(item)];
           const isPlanSelected = plan.includes(Object.keys(item));
@@ -58,23 +64,25 @@ const PlanSelection = () => {
             <div
               className={
                 isPlanSelected
-                  ? `${styles.planItem} ${styles.active}`
-                  : styles.planItem
+                  ? `${styles.planItem} ${styles.active} `
+                  : `${styles.planItem} `
               }
               onClick={handleClick}
               id={Object.keys(item)}
               key={Object.keys(item)}
             >
               <SvgComponent />
-              <h2>{Object.keys(item)}</h2>
-              {isMonthly ? (
-                <p>${item[Object.keys(item)].monthPrice}/mo</p>
-              ) : (
-                <>
-                  <p>${item[Object.keys(item)].yearPrice}/yr</p>
-                  <span>2 months free</span>
-                </>
-              )}
+              <div>
+                <h2>{Object.keys(item)}</h2>
+                {isMonthly ? (
+                  <p>${item[Object.keys(item)].monthPrice}/mo</p>
+                ) : (
+                  <>
+                    <p>${item[Object.keys(item)].yearPrice}/yr</p>
+                    <span>2 months free</span>
+                  </>
+                )}
+              </div>
             </div>
           );
         })}

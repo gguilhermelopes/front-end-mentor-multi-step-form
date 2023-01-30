@@ -5,6 +5,10 @@
   margin-bottom: 1rem;
 }
 
+.planWrapper.mobile {
+  flex-direction: column;
+}
+
 .durationWrapper {
   display: flex;
   gap: 1rem;
@@ -31,6 +35,14 @@
   cursor: pointer;
 }
 
+.planWrapper.mobile .planItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0.75rem;
+}
+
 .planItem.active {
   background: var(--magnolia);
   border-color: var(--purplish-blue);
@@ -43,6 +55,10 @@
 
 .planItem svg {
   margin-bottom: 2.5rem;
+}
+
+.planWrapper.mobile .planItem svg {
+  margin-bottom: 0;
 }
 
 .planItem h2 {
