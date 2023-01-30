@@ -12,6 +12,24 @@ const PersonalInfo = () => {
   const phone = useForm("phone");
   const { step, setStep, info, setInfo } = React.useContext(GlobalContext);
 
+  React.useEffect(() => {
+    const inputName = document.getElementById("name");
+    const inputEmail = document.getElementById("email");
+    const inputPhone = document.getElementById("phone");
+    if (info.name) {
+      inputName.value = info.name;
+      name.setValue(info.name);
+    }
+    if (info.email) {
+      inputEmail.value = info.email;
+      email.setValue(info.email);
+    }
+    if (info.phone) {
+      inputPhone.value = info.phone;
+      phone.setValue(info.phone);
+    }
+  }, [info.name, name, info.email, email, info.phone, phone]);
+
   function handleSubmit(event) {
     event.preventDefault();
     if (name.validate() && email.validate() && phone.validate()) {

@@ -90,7 +90,13 @@ const PlanSelection = () => {
             id="back"
             buttonInfo="Go Back"
           />
-          <Button id="next" buttonInfo="Next Step" />
+          <Button
+            onClick={() => {
+              if (plan) setStep(step + 1);
+            }}
+            id="next"
+            buttonInfo="Next Step"
+          />
         </div>
       </div>
     </>
