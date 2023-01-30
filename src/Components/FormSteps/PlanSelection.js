@@ -8,31 +8,32 @@ import { GlobalContext } from "../../Hooks/GlobalContext";
 import Slider from "../../Helpers/Slider";
 import Button from "../../Helpers/Button";
 
+export const planOptions = [
+  {
+    Arcade: {
+      monthPrice: 9,
+      yearPrice: 90,
+    },
+  },
+  {
+    Advanced: {
+      monthPrice: 12,
+      yearPrice: 120,
+    },
+  },
+  {
+    Pro: {
+      monthPrice: 15,
+      yearPrice: 150,
+    },
+  },
+];
+
 const PlanSelection = () => {
   const { duration, setDuration, plan, setPlan, setStep, step } =
     React.useContext(GlobalContext);
   const isMonthly = duration[0] ? false : true;
 
-  const planOptions = [
-    {
-      Arcade: {
-        monthPrice: 9,
-        yearPrice: 90,
-      },
-    },
-    {
-      Advanced: {
-        monthPrice: 12,
-        yearPrice: 120,
-      },
-    },
-    {
-      Pro: {
-        monthPrice: 15,
-        yearPrice: 150,
-      },
-    },
-  ];
   const svgMapping = {
     Arcade,
     Advanced,

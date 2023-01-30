@@ -3,7 +3,7 @@ import React from "react";
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
-  const [step, setStep] = React.useState(1);
+  const [step, setStep] = React.useState(2);
   const [info, setInfo] = React.useState({ name: "", email: "", phone: "" });
   const [plan, setPlan] = React.useState("Arcade");
   const [duration, setDuration] = React.useState("");

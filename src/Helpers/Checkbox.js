@@ -39,7 +39,9 @@ const Checkbox = ({ options, value, setValue }) => {
               <p>{option.description}</p>
             </div>
             <span>
-              {duration.length ? option.pricePerYear : option.pricePerMonth}
+              {duration.length
+                ? `+$${option.pricePerYear}/yr`
+                : `+$${option.pricePerMonth}/mo`}
             </span>
           </label>
         );
