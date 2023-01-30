@@ -205,21 +205,6 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-/* ANIMATIONS */
-
-.animaLeft {
-  opacity: 0;
-  transform: translateX(-40px);
-  animation: animaLeft 0.5s forwards;
-}
-
-@keyframes animaLeft {
-  to {
-    opacity: initial;
-    transform: initial;
-  }
-}
-
 /* SLIDER */
 
 .switch {

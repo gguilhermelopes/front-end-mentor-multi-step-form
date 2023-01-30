@@ -3,9 +3,11 @@ import FormHeader from "./FormHeader";
 import { GlobalContext } from "../../Hooks/GlobalContext";
 import { planOptions } from "./PlanSelection";
 import { options } from "./AddOns";
+import styles from "./Summary.module.css";
+import Button from "../../Helpers/Button";
 
 const Summary = () => {
-  const { plan, duration, setDuration, addOns } =
+  const { plan, duration, setDuration, addOns, step, setStep } =
     React.useContext(GlobalContext);
 
   const planFiltered = planOptions.filter((i) =>
@@ -36,40 +38,58 @@ const Summary = () => {
         title="Finishing up"
         info="Double check everything looks OK before confirming."
       />
-      <div>
-        <div>
-          <h2>
-            {plan} {duration.length ? "(Yearly)" : "(Monthly)"}
-          </h2>
-          <button onClick={handleClick}>Change</button>
+      <div className={styles.summaryWrapper}>
+        <div className={styles.planPriceWrapper}>
+          <div>
+            <h2>
+              {plan} {duration.length ? "(Yearly)" : "(Monthly)"}
+            </h2>
+            <button onClick={handleClick}>Change</button>
+          </div>
+          <span className={styles.planPrice}>
+            {duration.length
+              ? `$${planFiltered.yearPrice}/yr`
+              : `$${planFiltered.monthPrice}/mo`}
+          </span>
         </div>
-        <span>
-          {duration.length
-            ? `$${planFiltered.yearPrice}/yr`
-            : `$${planFiltered.monthPrice}/mo`}
-        </span>
+        {addOns.length ? (
+          <div className={styles.addOnsWrapper}>
+            {addOnsFiltered.map((item) => (
+              <div key={item.name} className={styles.addOnsItemWrapper}>
+                <p>{item.name}</p>
+                <span>
+                  {duration.length
+                    ? `+$${item.pricePerYear}/yr`
+                    : `+$${item.pricePerMonth}/mo`}
+                </span>
+              </div>
+            ))}
+          </div>
+        ) : null}
       </div>
-      {addOns.length ? (
-        <div>
-          {addOnsFiltered.map((item) => (
-            <>
-              <p key={item.name}>{item.name}</p>
-              <span>
-                {duration.length
-                  ? `+$${item.pricePerYear}/yr`
-                  : `+$${item.pricePerMonth}/mo`}
-              </span>
-            </>
-          ))}
-        </div>
-      ) : null}
-      <div>
+      <div className={styles.finalPriceWrapper}>
         <p>Total {duration.length ? "(per year)" : "(per month)"} </p>
         <span>
           {duration.length
             ? `$${addOnsSum + planFiltered.yearPrice}/yr`
             : `$${addOnsSum + planFiltered.monthPrice}/mo`}
         </span>
+      </div>
+      <div className={styles.flexParent}>
+        <div className={styles.buttonWrapper}>
+          <Button
+            onClick={() => setStep(step - 1)}
+            id="back"
+            buttonInfo="Go Back"
+          />
+          <Button
+            onClick={() => {
+              setStep(step + 1);
+            }}
+            id="next"
+            buttonInfo="Next Step"
+          />
+        </div>
       </div>
     </>
   );

@@ -37,7 +37,8 @@
 }
 
 .planItem:hover {
-  background-color: var(--alabaster);
+  background-color: var(--magnolia);
+  border-color: var(--pastel-blue);
 }
 
 .planItem svg {

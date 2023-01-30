@@ -9,6 +9,7 @@ const Sidebar = () => {
       <SidebarItem index={2} stepInfo="Select plan" />
       <SidebarItem index={3} stepInfo="Add-ons" />
       <SidebarItem index={4} stepInfo="Summary" />
+      <SidebarItem index={5} stepInfo="Finished!" />
     </section>
   );
 };
