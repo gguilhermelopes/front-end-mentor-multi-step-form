@@ -25,12 +25,12 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./Screenshot.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Repository](https://github.com/gguilhermelopes/front-end-mentor-multi-step-form)
+- Live Site URL: [Live URL](https://gguilhermelopes.github.io/front-end-mentor-multi-step-form/)
 
 ## My process
 
